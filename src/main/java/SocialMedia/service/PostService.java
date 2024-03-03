@@ -13,10 +13,16 @@ public class PostService {
     public PostService(PostRepository postRepository){
         this.postRepository=postRepository;
     }
-    public List<Post>getPostByUserId(Long userId){
-        return postRepository.findByUserId(userId);
+    public Post getPostByUserId(Long id){
+      return postRepository.getByuserId(id);
+    }
+    public List<Post>getAllPosts(){
+        return postRepository.findAll();
     }
     public Post createdPost(Post post){
         return postRepository.save(post);
+    }
+    public void deletePost(Long id){
+         postRepository.deleteById(id);
     }
 }
